@@ -86,8 +86,8 @@ MonoBehaviour:
     overrideState: 1
     value: 94
   kernelSize:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
 --- !u!114 &4839858104480076452
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Controls" style="background-color: rgba(0, 0, 0, 0.79); border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; width: 256px; height: 300px; color: rgb(255, 255, 255);">
+        <ui:Slider picking-mode="Ignore" label="Planet Rotation Speed" value="42" high-value="100" name="speedSlider" style="justify-content: center; flex-direction: column; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 17px; margin-bottom: 16px;" />
+        <ui:IMGUIContainer name="Minimap" style="width: auto; height: auto; -unity-background-scale-mode: scale-to-fit; overflow: hidden; visibility: visible; display: flex;" />
+    </ui:VisualElement>
+</ui:UXML>
