@@ -33,6 +33,10 @@ source-code: https://github.com/bslayerw/coursera-solar-system
 ### Resources
 
 [itch.io downloads](https://bslayerw.itch.io/solar-system): https://bslayerw.itch.io/solar-system
+
 [source code](https://github.com/bslayerw/coursera-solar-system): https://github.com/bslayerw/coursera-solar-system
+
 [Project management](https://trello.com/b/IpTxRwSe/game-design-and-development-1-solar-system): https://trello.com/b/IpTxRwSe/game-design-and-development-1-solar-system
+
 [Demo video](https://youtu.be/qw1AkmDDQh4): https://youtu.be/qw1AkmDDQh4
+
