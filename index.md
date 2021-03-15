@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+# Header 1
+Solar System assignment for week 1 of Game Design and Development 1. 
+
+## Assignment Description:
 
 You can use the [editor on GitHub](https://github.com/bslayerw/coursera-solar-system/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This is the first assignment as part of the Game Design and Development 1 course available through Coursera, by the University of Michigan.
 
-### Markdown
+In this assignment, you will complete the Solar System Unity assignment, which will demonstrate your understanding of the Unity editor, creating and positioning game objects, apply behaviors, creating and applying materials, adding lighting and audio, adjusting cameras, building the project, building the projects, and packaging it for sharing. Make sure to read and follow the "Solar System Assignment" instructions carefully. Then submit the URL below and conduct peer reviews of your fellow learners.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### What I added:
 
-```markdown
-Syntax highlighted code block
+- All planets along with their materials and shaders.
 
-# Header 1
-## Header 2
-### Header 3
+- Camera effects, both bloom and depth of field applied.
 
-- Bulleted
-- List
+- Additional work put into the minimap, I make a simple little UI, and instead of rendering the camera for a viewport within the screen, I render the camera to a texture target which is displayed in the UI.
 
-1. Numbered
-2. List
+- Added a speed slider for the planet rotation, this allows you to speed up, low down, and even reverse the rotation on the planets. Very useful when trying to click on a planet to target the camera. 
 
-**Bold** and _Italic_ and `Code` text
+- I made a number of enhancements to the minimap, I added a label for each planet so it's more clear what's going on. 
 
-[Link](url) and ![Image](src)
-```
+- I implemented a few scripts for all the above work.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Other
+You can see how I usually track works on projects using Trello. I've added details to the cards on where I found resources while learning. For example, tutorials on particle systems, creating minimaps, doing Unity UI, etc. here: https://trello.com/b/IpTxRwSe/game-design-and-development-1-solar-system
 
-### Jekyll Themes
+I have also open-sourced this little project in case other students are curious how I did some of the effects etc. 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bslayerw/coursera-solar-system/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+source-code: https://github.com/bslayerw/coursera-solar-system
 
-### Support or Contact
+### Resources: 
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[itch.io downloads](https://bslayerw.itch.io/solar-system): https://bslayerw.itch.io/solar-system
+[source code](https://github.com/bslayerw/coursera-solar-system): https://github.com/bslayerw/coursera-solar-system
+[Project management](https://trello.com/b/IpTxRwSe/game-design-and-development-1-solar-system): https://trello.com/b/IpTxRwSe/game-design-and-development-1-solar-system
+[Demo video](https://youtu.be/qw1AkmDDQh4): https://youtu.be/qw1AkmDDQh4
