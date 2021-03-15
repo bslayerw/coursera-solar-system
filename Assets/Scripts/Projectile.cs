@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour
     [Tooltip("How far away from the main camera before destroying the projectile gameobject in meters.")]
     public float destroyDistance = 20.0f;
 
+    private void Start()
+    {
+        destroyDistance += Random.Range(-50.0f, 50.0f);
+    }
     /// <summary>
     /// Description:
     /// Standard Unity function called once per frame
@@ -38,10 +42,12 @@ public class Projectile : MonoBehaviour
     private void MoveProjectile()
     {
         // move the transform
-        transform.position = transform.position + transform.forward * projectileSpeed * Time.deltaTime;
+        var transform1 = transform;
+        transform1.position = transform1.position + transform1.forward * (projectileSpeed * Time.deltaTime);
         
         // calculate the distance from the main camera
-        float dist = Vector3.Distance(Camera.main.transform.position, transform.position);
+        if (Camera.main is null) return;
+        var dist = Vector3.Distance(Camera.main.transform.position, transform1.position);
 
         // if the distance is greater than the destroyDistance
         if (dist>destroyDistance)

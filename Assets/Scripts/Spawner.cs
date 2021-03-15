@@ -28,14 +28,25 @@ public class Spawner : MonoBehaviour
         nextSpawn += Time.deltaTime;
 
         // if time to spawn
-        if (nextSpawn>spawnTime)
-        {
-            // Spawn the gameObject at the spawners current position and rotation
-            GameObject projectileGameObject = Instantiate(spawnPrefab, transform.position, transform.rotation, null);
+        if (!(nextSpawn > spawnTime)) return;
+        
+        var transform2 = transform;
+        
+        // add some randomness to the rotation
+        transform2.rotation = Random.rotation;
+        
+        // add some randomness to the location
+        var randomLocation = transform2.position + new Vector3(
+            Random.Range(-5.0f, 5.0f), 
+            Random.Range(-5.0f, 5.0f), 
+            Random.Range(-5.0f, 5.0f)
+            );
+        
+        // Spawn the gameObject at the spawners current position and rotation
+        var projectileGameObject = Instantiate(spawnPrefab, randomLocation, transform2.rotation, null);
 
-            // reset the time until nextSpawn
-            nextSpawn = 0f;
-        }
+        // reset the time until nextSpawn
+        nextSpawn = 0f;
 
     }
 }

@@ -1,22 +1,45 @@
+#region MIT License
+
+// # Released under MIT License
+// 
+// Copyright (c) 2021 Byron Wright.
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// 
+
+#endregion
+
 using System.Linq;
 using UnityEngine;
 
 namespace Utils
 {
     /// <summary>
-    /// Abstract class for making reload-proof singletons out of ScriptableObjects
-    /// Returns the asset created on the editor, or null if there is none
-    /// Based on https://www.youtube.com/watch?v=VBA1QCoEAX4
+    ///     Abstract class for making reload-proof singletons out of ScriptableObjects
+    ///     Returns the asset created on the editor, or null if there is none
+    ///     Based on https://www.youtube.com/watch?v=VBA1QCoEAX4
     /// </summary>
     /// <typeparam name="T">Singleton type</typeparam>
+    public abstract class SingletonScriptableObject<T> : ScriptableObject where T : ScriptableObject
+    {
+        private static T _instance;
 
-    public abstract class SingletonScriptableObject<T> : ScriptableObject where T : ScriptableObject {
-        private static T _instance = null;
         public static T Instance
         {
             get
             {
                 if (!_instance)
+                    // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                     _instance = Resources.FindObjectsOfTypeAll<T>().FirstOrDefault();
                 return _instance;
             }

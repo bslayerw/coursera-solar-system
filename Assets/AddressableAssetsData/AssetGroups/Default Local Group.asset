@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8a762bbc303974045b1c7093be3cdda9
+  m_SerializeEntries:
+  - m_GUID: 502bb00ed8b71439baccf96d9f8a18dc
+    m_Address: Assets/Gfx/MinimapRenderTex.renderTexture
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    m_MainAsset: {fileID: 8400000, guid: 502bb00ed8b71439baccf96d9f8a18dc, type: 2}
+    m_TargetAsset: {fileID: 8400000, guid: 502bb00ed8b71439baccf96d9f8a18dc, type: 2}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7b94aa2632af74a3592adf790d67965f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 984b51bca31144c32a6db8d5d68a3cd9, type: 2}
+    - {fileID: 11400000, guid: 31323b1ca4ff9406ca59a6a226807ddb, type: 2}
