@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
         var dist = Vector3.Distance(Camera.main.transform.position, transform1.position);
 
         // if the distance is greater than the destroyDistance
-        if (dist>destroyDistance)
+        if (dist > destroyDistance)
         {
             Destroy(this.gameObject); // destroy the gameObject
         }
