@@ -25,11 +25,14 @@ namespace Utils
 {
     public class LookAtTarget : MonoBehaviour
     {
+        public delegate void ObjectSelectDelegate(GameObject go);
+        public ObjectSelectDelegate ObjectClickDelegate;
         [Tooltip("This is the object that the script's game object will look at by default")]
         public GameObject defaultTarget; // the default target that the camera should look at
 
         [Tooltip(
-            "This is the object that the script's game object is currently look at based on the player clicking on a gameObject")]
+            "This is the object that the script's game object is currently look at based on the player clicking on a gameObject"
+            )]
         public GameObject currentTarget; // the target that the camera should look at
 
         // Start happens once at the beginning of playing. This is a great place to setup the behavior for this gameObject
@@ -68,8 +71,14 @@ namespace Utils
                     // get the first object hit
                     var hit = hits[0];
                     currentTarget = hit.collider.gameObject;
-
-                    Debug.Log("defaultTarget changed to " + currentTarget.name);
+                    if (ObjectClickDelegate != null)
+                    {
+                        ObjectClickDelegate(currentTarget);
+                    }
+                    
+                    // delegates can call this behaviors current target to get the new look at.
+                    
+                    Debug.Log("currentTarget changed to " + currentTarget.name);
                 }
             }
             else if (Input.GetMouseButtonDown(1)) // if the second mouse button is pressed

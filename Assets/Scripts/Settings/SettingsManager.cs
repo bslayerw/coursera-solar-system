@@ -24,6 +24,7 @@ using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 namespace Settings
 {
@@ -51,15 +52,35 @@ namespace Settings
         [SerializeField] private GameObject[] vCams;
         [SerializeField] private GameObject currentVcam;
 
+        [SerializeField] private LookAtTarget cameraLookAtTarget;
         public SelectionDisplayData[] selectionData;
 
         private void OnEnable()
         {
+            Debug.Log($"SettingsManager OnEnable, setting delegate on {cameraLookAtTarget}");
+            cameraLookAtTarget.ObjectClickDelegate = OnObjectClick;
             SetupSpeedSlider();
             SetupPlanetTargetCameraDropdown();
             SetupCameraLocationDropdown();
             // populate data display
             SetDataDisplay(0);
+        }
+
+        private void OnObjectClick(GameObject obj)
+        {
+            var currentTargetTag = obj.tag;
+            Debug.Log($"object with tag: {currentTargetTag} was clicked");
+            // find the target in the currently available targets
+            for (var i = 0; i < cameraTargets.Length; i++)
+            {
+                if (cameraTargets[i].CompareTag(currentTargetTag))
+                {
+                    // found the target the user clicked on in the available targets
+                    // set the current selection to the target
+                    Debug.Log($"found cameraTarget with the same tag");
+                    planetTargetCameraDropdown.value = i;
+                }
+            }
         }
 
         private void SetupSpeedSlider()

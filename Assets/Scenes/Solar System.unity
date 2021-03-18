@@ -1006,6 +1006,7 @@ MonoBehaviour:
   - {fileID: 618753075}
   - {fileID: 795123711}
   currentVcam: {fileID: 1581155855}
+  cameraLookAtTarget: {fileID: 1887674022}
   selectionData:
   - title: sun
     text: "Class: Star\\nDiameter: 1,392,684 km\\nPlanets & Dwarf Planets: 13\\nAge:
@@ -2557,7 +2558,7 @@ GameObject:
   - component: {fileID: 463421743}
   m_Layer: 0
   m_Name: Mars
-  m_TagString: Untagged
+  m_TagString: mars
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3042,7 +3043,7 @@ GameObject:
   - component: {fileID: 564058491}
   m_Layer: 0
   m_Name: Jupiter
-  m_TagString: Untagged
+  m_TagString: jupiter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3447,7 +3448,7 @@ GameObject:
   - component: {fileID: 590841259}
   m_Layer: 0
   m_Name: Saturn
-  m_TagString: Untagged
+  m_TagString: saturn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5711,7 +5712,7 @@ GameObject:
   - component: {fileID: 1038656353}
   m_Layer: 0
   m_Name: Mercury
-  m_TagString: Untagged
+  m_TagString: mercury
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6048,7 +6049,7 @@ GameObject:
   - component: {fileID: 1172729074}
   m_Layer: 0
   m_Name: Venus
-  m_TagString: Untagged
+  m_TagString: venus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6996,7 +6997,7 @@ GameObject:
   - component: {fileID: 1301876711}
   m_Layer: 0
   m_Name: Earth
-  m_TagString: Untagged
+  m_TagString: earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9075,7 +9076,7 @@ GameObject:
   - component: {fileID: 1552352210}
   m_Layer: 0
   m_Name: Uranus
-  m_TagString: Untagged
+  m_TagString: uranus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9474,7 +9475,7 @@ GameObject:
   - component: {fileID: 1578611489}
   m_Layer: 0
   m_Name: Pluto-dwarf-planet
-  m_TagString: Untagged
+  m_TagString: pluto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10685,7 +10686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTarget: {fileID: 1423405285}
-  currentTarget: {fileID: 1423405285}
+  currentTarget: {fileID: 1172729069}
 --- !u!114 &1887674023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11099,7 +11100,7 @@ GameObject:
   - component: {fileID: 2013784522}
   m_Layer: 0
   m_Name: Neptune
-  m_TagString: Untagged
+  m_TagString: neptune
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
