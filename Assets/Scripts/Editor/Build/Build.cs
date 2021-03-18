@@ -137,7 +137,16 @@ namespace Editor.Build
         [MenuItem("DevOps/Git Status")]
         public static void GitStatus()
         {
-            Debug.Log($"git status {Git.Status}");
+            var status = Git.Status;
+            Debug.Log($"git status {status}");
+            if (Git.Status == "")
+            {
+                Debug.Log($"Local files are all comitted.");
+            }
+            else
+            {
+                Debug.Log($"You have local files that have not been comitted: {status}");
+            }
         }
         
         private static void CreateVersionFile(BuildTarget target)
