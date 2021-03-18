@@ -21,6 +21,7 @@
 
 using System;
 using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
 
 namespace Editor.Build
@@ -44,6 +45,15 @@ namespace Editor.Build
 
     public static class Git
     {
+        [MenuItem("DevOps/Git/Build Version Status")]
+        public static void BuildVersionStatus()
+        {
+            EditorUtility.DisplayDialog(
+                "Current Build Version",
+                $"{BuildVersion}",
+                "Ok",
+                "Close");
+        }
         /* Properties ============================================================================================================= */
 
         /// <summary>
@@ -84,8 +94,14 @@ namespace Editor.Build
         {
             using (var process = new Process())
             {
-                var exitCode = process.Run(@"git", arguments, Application.dataPath,
-                    out var output, out var errors);
+                var exitCode = process.Run(
+                    @"git", 
+                    arguments,
+                    Application.dataPath,
+                    out var output, 
+                    out var errors, 
+                    true
+                    );
                 if (exitCode == 0)
                     return output;
                 throw new GitException(exitCode, errors);

@@ -36,7 +36,7 @@ namespace Editor.Build
         /// </summary>
         public static int Run(this Process process, string application,
             string arguments, string workingDirectory, out string output,
-            out string errors)
+            out string errors, bool createWindow = false)
         {
             process.StartInfo = new ProcessStartInfo
             {
