@@ -33,5 +33,7 @@ namespace Settings
         public float speedMultiplier = 1.0f;
 
         [HideInInspector] public Vector2 uiPositionMultiplier = new Vector2(0.0f, 0.0f);
+
+        public int currentPlanetTargetSelection = 0;
     }
 }
