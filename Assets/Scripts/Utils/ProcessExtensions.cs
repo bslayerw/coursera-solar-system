@@ -20,7 +20,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace Editor.Build
+namespace Utils
 {
     public static class ProcessExtensions
     {

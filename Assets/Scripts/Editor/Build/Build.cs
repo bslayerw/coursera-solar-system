@@ -6,6 +6,7 @@ using Ionic.Zip;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using Utils;
 
 namespace Editor.Build
 {
@@ -131,6 +132,12 @@ namespace Editor.Build
                         $"Build failed, unknown result:{summary.result} for {summary.platform}. Size: {FormatSize(summary.totalSize)} in [{summary.totalTime}]");
                     return false;
             }
+        }
+        
+        [MenuItem("DevOps/Git Status")]
+        public static void GitStatus()
+        {
+            Debug.Log($"git status {Git.Status}");
         }
         
         private static void CreateVersionFile(BuildTarget target)

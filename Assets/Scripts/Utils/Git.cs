@@ -24,7 +24,7 @@ using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Build
+namespace Utils
 {
     /// <summary>
     ///     GitException includes the error output from a Git.Run() command as well as the
@@ -45,15 +45,6 @@ namespace Editor.Build
 
     public static class Git
     {
-        [MenuItem("DevOps/Git/Build Version Status")]
-        public static void BuildVersionStatus()
-        {
-            EditorUtility.DisplayDialog(
-                "Current Build Version",
-                $"{BuildVersion}",
-                "Ok",
-                "Close");
-        }
         /* Properties ============================================================================================================= */
 
         /// <summary>

@@ -48,6 +48,8 @@ namespace Settings
         [SerializeField] private TextMeshProUGUI selectionDescription;
         [SerializeField] private Image selectionImage;
         
+        [SerializeField] private TextMeshProUGUI buildNumberLabel;
+        
         [SerializeField] private Transform[] cameraTargets;
         [SerializeField] private GameObject[] vCams;
         [SerializeField] private GameObject currentVcam;
@@ -57,13 +59,20 @@ namespace Settings
 
         private void OnEnable()
         {
-            Debug.Log($"SettingsManager OnEnable, setting delegate on {cameraLookAtTarget}");
-            cameraLookAtTarget.ObjectClickDelegate = OnObjectClick;
+            SetupBuildNumberInfo();
             SetupSpeedSlider();
             SetupPlanetTargetCameraDropdown();
             SetupCameraLocationDropdown();
+            
+            cameraLookAtTarget.ObjectClickDelegate = OnObjectClick;
             // populate data display
             SetDataDisplay(0);
+        }
+
+        
+        private void SetupBuildNumberInfo()
+        {
+            buildNumberLabel.text =  Git.BuildVersion;
         }
 
         private void OnObjectClick(GameObject obj)
