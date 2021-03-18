@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Editor.Deploy;
 using Ionic.Zip;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
@@ -17,7 +18,14 @@ namespace Editor.Build
             {"Bytes", "KB", "MB", "GB", "TB", "PB"};
 
 
-        [MenuItem("DevOps/Build All Supported Platforms")]
+        [MenuItem("DevOps/Build & Deploy All")]
+        public static void BuildAndDeployAll()
+        {
+            PerformAllBuilds();
+            Itchio.DeployAll();
+        }
+        
+        [MenuItem("DevOps/Build/All")]
         private static void PerformAllBuilds()
         {
             CleanAll();
@@ -108,19 +116,19 @@ namespace Editor.Build
             switch (summary.result)
             {
                 case BuildResult.Succeeded:
-                    Debug.Log($"Build succeeded for {summary.platform}. Size: {FormatSize(summary.totalSize)}");
+                    Debug.Log($"Build succeeded for {summary.platform}. Size: {FormatSize(summary.totalSize)} in [{summary.totalTime}]");
                     return true;
                 case BuildResult.Failed:
-                    Debug.Log($"Build failed for {summary.platform}. Size: {FormatSize(summary.totalSize)}");
+                    Debug.Log($"Build failed for {summary.platform}. Size: {FormatSize(summary.totalSize)} in [{summary.totalTime}]");
                     return false;
                 case BuildResult.Unknown:
                     return false;
                 case BuildResult.Cancelled:
-                    Debug.Log($"Build cancelled for {summary.platform}. Size: {FormatSize(summary.totalSize)}");
+                    Debug.Log($"Build cancelled for {summary.platform}. Size: {FormatSize(summary.totalSize)} in [{summary.totalTime}]");
                     return false;
                 default:
                     Debug.Log(
-                        $"Build failed, unknown result:{summary.result} for {summary.platform}. Size: {FormatSize(summary.totalSize)}");
+                        $"Build failed, unknown result:{summary.result} for {summary.platform}. Size: {FormatSize(summary.totalSize)} in [{summary.totalTime}]");
                     return false;
             }
         }
@@ -144,7 +152,8 @@ namespace Editor.Build
                 zip.Save($"{fileOrFolderToArchive}.zip");
             }
         }
-
+        
+        [MenuItem("DevOps/Clean/All")]
         public static void CleanAll()
         {
             CleanMac();
@@ -152,7 +161,7 @@ namespace Editor.Build
             CleanLinux();
             CleanWebGL();
         }
-
+        
         [MenuItem("DevOps/Clean/Clean macOS")]
         public static void CleanMac()
         {

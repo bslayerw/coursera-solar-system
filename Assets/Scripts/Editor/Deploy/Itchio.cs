@@ -78,20 +78,23 @@ namespace Editor.Deploy
 
         public static void DeployForTargets(BuildTarget target)
         {
-            var buildLocation = $"{Build.Build.GetBuildLocationForTarget(target)}.zip";
-            if (!File.Exists(buildLocation))
+            
+            var buildFolder = Build.Build.GetBuildLocationForTarget(target);
+            var buildZip = $"{buildFolder}.zip";
+            if (!File.Exists(buildZip))
             {
                 Debug.LogError($"Failed to deploy {target}, not build file found. Be sure to create a build first");
                 return;
             }
-            
-            Debug.Log($"running commmand: push \"{buildLocation}\" {userName}/{gameName}:{ChannelForTarget(target)}");
+
+            var pushCmd = $"push \"{buildZip}\" {userName}/{gameName}:{ChannelForTarget(target)} --userversion-file \"{buildFolder}\"{Path.DirectorySeparatorChar}/buildnumber.txt";
+            Debug.Log($"running commmand: {pushCmd}");
           
             using (var process = new Process())
             {
                 var exitCode = process.Run(
                     @pathToButlerExecutable,
-                    $"push \"{buildLocation}\" {userName}/{gameName}:{ChannelForTarget(target)}",
+                    pushCmd,
                     Application.dataPath,
                     out var output,
                     out var errors,
@@ -115,6 +118,15 @@ namespace Editor.Deploy
                 Debug.LogError($"failed to deploy to itch.io: {errors}, {output}");
                 throw new ItchioException(exitCode, errors);
             }
+        }
+        
+        [MenuItem("DevOps/Deploy/itch.io/All")]
+        public static void DeployAll()
+        {
+            DeployWebGL();
+            DeployMac();
+            DeployWindows();
+            DeployLinux();
         }
 
         [MenuItem("DevOps/Deploy/itch.io/WebGL")]
