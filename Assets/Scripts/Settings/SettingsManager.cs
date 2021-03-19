@@ -23,6 +23,7 @@ using System.Globalization;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Utils;
 
@@ -49,6 +50,10 @@ namespace Settings
         [SerializeField] private Image selectionImage;
         
         [SerializeField] private TextMeshProUGUI buildNumberLabel;
+
+        [SerializeField] private GameObject fpsPanel;
+        [SerializeField] private GameObject versionPanel;
+        [SerializeField] private GameObject mainPanel;
         
         [SerializeField] private Transform[] cameraTargets;
         [SerializeField] private GameObject[] vCams;
@@ -57,8 +62,13 @@ namespace Settings
         [SerializeField] private LookAtTarget cameraLookAtTarget;
         public SelectionDisplayData[] selectionData;
 
+
         private void OnEnable()
         {
+            mainPanel.SetActive(true);
+            versionPanel.SetActive(false);
+            fpsPanel.SetActive(false);
+            
             SetupBuildNumberInfo();
             SetupSpeedSlider();
             SetupPlanetTargetCameraDropdown();
@@ -67,18 +77,33 @@ namespace Settings
             cameraLookAtTarget.ObjectClickDelegate = OnObjectClick;
             // populate data display
             SetDataDisplay(0);
+
+            Utils.ProfileTools.EnumerateProfilerStats();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.F))
+            {
+                versionPanel.SetActive(!versionPanel.activeSelf);
+                fpsPanel.SetActive(!fpsPanel.activeSelf);
+            }
+
+            if (Input.GetKeyUp(KeyCode.M))
+            {
+                mainPanel.SetActive(!mainPanel.activeSelf);
+            }
         }
 
         
         private void SetupBuildNumberInfo()
         {
-            buildNumberLabel.text =  Git.BuildVersion;
+            buildNumberLabel.text =  $"Build # {Git.BuildVersion}";
         }
 
         private void OnObjectClick(GameObject obj)
         {
             var currentTargetTag = obj.tag;
-            Debug.Log($"object with tag: {currentTargetTag} was clicked");
             // find the target in the currently available targets
             for (var i = 0; i < cameraTargets.Length; i++)
             {
@@ -86,7 +111,6 @@ namespace Settings
                 {
                     // found the target the user clicked on in the available targets
                     // set the current selection to the target
-                    Debug.Log($"found cameraTarget with the same tag");
                     planetTargetCameraDropdown.value = i;
                 }
             }
@@ -148,8 +172,10 @@ namespace Settings
 
         private void OnSpeedSliderValueChanged()
         {
+            
             uiSettings.speedMultiplier = speedMultiplierSlider.value;
             currentSpeedValueLabel.text = speedMultiplierSlider.value.ToString("0.00", CultureInfo.InvariantCulture);
+            Debug.Log($"OnSpeedS;iderValueChanged : {speedMultiplierSlider.value}");
         }
 
         private void SwitchVcam(int vcamIndex, int targetIndex)

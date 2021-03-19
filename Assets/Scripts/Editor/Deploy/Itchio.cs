@@ -22,8 +22,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
-using Editor.Build;
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -35,22 +33,24 @@ namespace Editor.Deploy
     {
         // because the executable butler is already in my path / env variables (on macOS) I can
         // just refer to the executable name
-        public static string pathToButlerExecutable = "/Users/byronwright/Projects/Goodies/itchio/butler/butler"; 
+        public static string pathToButlerExecutable = "/Users/byronwright/Projects/Goodies/itchio/butler/butler";
+
         // An example of these two variables can be found in the url of your project e.g.:
         //https://bslayerw.itch.io/solar-system
         // where bslayerw part is your username and "solar-system" is your game/project name
         // this is part of the url of your project page on itch.io. It's always all lower-case.
         public static string userName = "bslayerw";
+
         // this is part of the url of your project page on itch.io. It's always all lower-case
         public static string gameName = "solar-system";
-        
+
         [MenuItem("DevOps/Deploy/itch.io/Login")]
         public static string Login()
         {
             using (var process = new Process())
             {
                 var exitCode = process.Run(
-                    @pathToButlerExecutable,
+                    pathToButlerExecutable,
                     "login",
                     Application.dataPath,
                     out var output,
@@ -62,16 +62,16 @@ namespace Editor.Deploy
                     EditorUtility.DisplayDialog(
                         "Logged to itch.io",
                         $"{output}",
-                        "Ok",
-                        "Close");
+                        "Ok"
+                    );
                     return output;
                 }
 
                 EditorUtility.DisplayDialog(
                     "failed to login to itch.io",
                     $"{errors}, {output}",
-                    "Ok",
-                    "Close");
+                    "Ok"
+                );
                 Debug.LogError($"failed to login to itch.io: {errors}, {output}");
                 throw new ItchioException(exitCode, errors);
             }
@@ -79,7 +79,6 @@ namespace Editor.Deploy
 
         public static void DeployForTargets(BuildTarget target)
         {
-            
             var buildFolder = Build.Build.GetBuildLocationForTarget(target);
             var buildZip = $"{buildFolder}.zip";
             if (!File.Exists(buildZip))
@@ -88,39 +87,39 @@ namespace Editor.Deploy
                 return;
             }
 
-            var pushCmd = $"push \"{buildZip}\" {userName}/{gameName}:{ChannelForTarget(target)} --userversion-file \"{buildFolder}\"{Path.DirectorySeparatorChar}/buildnumber.txt";
+            var pushCmd =
+                $"push \"{buildZip}\" {userName}/{gameName}:{ChannelForTarget(target)} --userversion-file \"{buildFolder}\"{Path.DirectorySeparatorChar}/buildnumber.txt";
             Debug.Log($"running commmand: {pushCmd}");
-          
+
             using (var process = new Process())
             {
                 var exitCode = process.Run(
-                    @pathToButlerExecutable,
+                    pathToButlerExecutable,
                     pushCmd,
                     Application.dataPath,
                     out var output,
-                    out var errors,
-                    false
+                    out var errors
                 );
                 if (exitCode == 0)
                 {
                     EditorUtility.DisplayDialog(
-                        "Logged to itch.io",
+                        $"Deployed {target} itch.io",
                         $"{output}",
-                        "Ok",
-                        "Close");
+                        "Ok"
+                    );
                     return;
                 }
 
                 EditorUtility.DisplayDialog(
-                    "failed to deploy to itch.io",
+                    $"failed to deploy {target} to itch.io",
                     $"{errors}, {output}",
-                    "Ok",
-                    "Close");
+                    "Ok"
+                );
                 Debug.LogError($"failed to deploy to itch.io: {errors}, {output}");
                 throw new ItchioException(exitCode, errors);
             }
         }
-        
+
         [MenuItem("DevOps/Deploy/itch.io/All")]
         public static void DeployAll()
         {
@@ -141,42 +140,43 @@ namespace Editor.Deploy
         {
             DeployForTargets(BuildTarget.StandaloneOSX);
         }
+
         [MenuItem("DevOps/Deploy/itch.io/Windows")]
         public static void DeployWindows()
         {
             DeployForTargets(BuildTarget.StandaloneWindows64);
         }
-        
+
         [MenuItem("DevOps/Deploy/itch.io/Linux")]
         public static void DeployLinux()
         {
             DeployForTargets(BuildTarget.StandaloneLinux64);
         }
-        
+
         [MenuItem("DevOps/Deploy Status/WebGL")]
         public static string WebGLStatus()
         {
             var status = Status(BuildTarget.StandaloneOSX);
             EditorUtility.DisplayDialog(
-                "Logged to itch.io",
+                "WebGL Status from itch.io",
                 $"{status}",
-                "Ok",
-                "Close");
+                "Ok"
+            );
             return status;
         }
-        
+
         [MenuItem("DevOps/Deploy Status/macOS")]
         public static string MacStatus()
         {
             var status = Status(BuildTarget.StandaloneOSX);
             EditorUtility.DisplayDialog(
-                "Logged to itch.io",
+                "macOS Status from itch.io",
                 $"{status}",
-                "Ok",
-                "Close");
+                "Ok"
+            );
             return status;
         }
-        
+
         [MenuItem("DevOps/Deploy Status/Windows")]
         public static string WindowsStatus()
         {
@@ -184,11 +184,11 @@ namespace Editor.Deploy
             EditorUtility.DisplayDialog(
                 "Logged to itch.io",
                 $"{status}",
-                "Ok",
-                "Close");
+                "Ok"
+            );
             return status;
         }
-        
+
         [MenuItem("DevOps/Deploy Status/Linux")]
         public static string WindowsLinux()
         {
@@ -196,8 +196,8 @@ namespace Editor.Deploy
             EditorUtility.DisplayDialog(
                 "Logged to itch.io",
                 $"{status}",
-                "Ok",
-                "Close");
+                "Ok"
+            );
             return status;
         }
 
@@ -223,22 +223,19 @@ namespace Editor.Deploy
             using (var process = new Process())
             {
                 var exitCode = process.Run(
-                    @pathToButlerExecutable,
+                    pathToButlerExecutable,
                     $"status {userName}/{gameName}:{ChannelForTarget(target)}",
                     Application.dataPath,
                     out var output,
                     out var errors
                 );
-                if (exitCode == 0)
-                {
-                    return output;
-                }
+                if (exitCode == 0) return output;
 
                 EditorUtility.DisplayDialog(
                     "failed to deploy to itch.io",
                     $"{errors}, {output}",
-                    "Ok",
-                    "Close");
+                    "Ok"
+                    );
                 Debug.LogError($"failed to deploy to itch.io: {errors}, {output}");
                 throw new ItchioException(exitCode, errors);
             }

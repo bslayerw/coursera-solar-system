@@ -35,9 +35,14 @@ namespace Utils
             )]
         public GameObject currentTarget; // the target that the camera should look at
 
-        // Start happens once at the beginning of playing. This is a great place to setup the behavior for this gameObject
+        private Camera _camera;
+
+        private RaycastHit[] _hits;
+
         private void Start()
         {
+            _hits = new RaycastHit[5];
+            _camera = Camera.main;
             if (defaultTarget == null)
             {
                 defaultTarget = gameObject;
@@ -59,24 +64,24 @@ namespace Utils
             if (Input.GetMouseButtonDown(0))
             {
                 // determine the ray from the camera to the mousePosition
-                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                var ray = _camera.ScreenPointToRay(Input.mousePosition);
 
                 // cast a ray to see if it hits any gameObjects
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(ray);
+                var numberOfHits = Physics.RaycastNonAlloc(ray, _hits);
 
                 // if there are hits
-                if (hits.Length > 0)
+                if (numberOfHits > 0)
                 {
                     // get the first object hit
-                    var hit = hits[0];
+                    var hit = _hits[0];
                     currentTarget = hit.collider.gameObject;
+                    // delegates can call this behaviors currentTarget to get the new look at.
                     if (ObjectClickDelegate != null)
                     {
                         ObjectClickDelegate(currentTarget);
                     }
                     
-                    // delegates can call this behaviors current target to get the new look at.
+                    
                     
                     Debug.Log("currentTarget changed to " + currentTarget.name);
                 }

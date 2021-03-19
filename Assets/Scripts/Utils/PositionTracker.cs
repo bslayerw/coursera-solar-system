@@ -32,7 +32,6 @@ namespace Utils
             // when we start we want to take our current position and subtract it from object to track to get our
             // offset. 
             _positionOffset = objectToTrack.transform.position - transform.position;
-            Debug.Log("_positionOffset =" + _positionOffset + " objectToTrack.position =" + objectToTrack.position);
         }
         private void LateUpdate () 
         {
