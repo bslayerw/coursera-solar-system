@@ -102,19 +102,9 @@ namespace Editor.Deploy
                 );
                 if (exitCode == 0)
                 {
-                    EditorUtility.DisplayDialog(
-                        $"Deployed {target} itch.io",
-                        $"{output}",
-                        "Ok"
-                    );
+                    Debug.Log($"Successfully deploy {target} itch.io");
                     return;
                 }
-
-                EditorUtility.DisplayDialog(
-                    $"failed to deploy {target} to itch.io",
-                    $"{errors}, {output}",
-                    "Ok"
-                );
                 Debug.LogError($"failed to deploy to itch.io: {errors}, {output}");
                 throw new ItchioException(exitCode, errors);
             }
@@ -182,7 +172,7 @@ namespace Editor.Deploy
         {
             var status = Status(BuildTarget.StandaloneWindows64);
             EditorUtility.DisplayDialog(
-                "Logged to itch.io",
+                "Windows Status from itch.io",
                 $"{status}",
                 "Ok"
             );
@@ -194,7 +184,7 @@ namespace Editor.Deploy
         {
             var status = Status(BuildTarget.StandaloneLinux64);
             EditorUtility.DisplayDialog(
-                "Logged to itch.io",
+                "Linux Status from itch.io",
                 $"{status}",
                 "Ok"
             );

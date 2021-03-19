@@ -12,8 +12,8 @@ namespace Editor.Build
 {
     public class Build
     {
-        private static readonly string BuildPath = $"{Application.dataPath}/../Builds";
-        private static readonly string ProductName = "SolarSystem";
+        private static string BuildPath = $"{Application.dataPath}{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Builds";
+        private static string ProductName = "SolarSystem";
 
         private static readonly string[] suffixes =
             {"Bytes", "KB", "MB", "GB", "TB", "PB"};
@@ -44,10 +44,10 @@ namespace Editor.Build
         {
             var versionNumber = Git.BuildVersion;
             PlayerSettings.bundleVersion = versionNumber;
-            var buildLocation = $"{BuildPath}/{ProductName}.{target}.{versionNumber}";
-            var buildName = $"{ProductName}{GetAppExtension(target)}";
+            var buildLocation = $"{BuildPath}{Path.DirectorySeparatorChar}{ProductName}.{target}.{versionNumber}";
+            var buildName = $"{ProductName}{Path.DirectorySeparatorChar}{GetAppExtension(target)}";
             Debug.Log($"buildLocation {buildLocation}");
-            Debug.Log($"path: {buildLocation}/{buildName}");
+            Debug.Log($"path: {buildLocation}{Path.DirectorySeparatorChar}{buildName}");
             // edge case for WebGL, as it's a single folder with all the files in it 
             if (target == BuildTarget.WebGL)
             {
@@ -55,7 +55,7 @@ namespace Editor.Build
             }
             var report = BuildPipeline.BuildPlayer(
                 EditorBuildSettings.scenes,
-                $"{buildLocation}/{buildName}",
+                $"{buildLocation}{Path.DirectorySeparatorChar}{buildName}",
                 target,
                 options
             );
@@ -67,7 +67,7 @@ namespace Editor.Build
         public static string GetBuildLocationForTarget(BuildTarget target)
         {
             var versionNumber = Git.BuildVersion;
-            return $"{BuildPath}/{ProductName}.{target}.{versionNumber}";
+            return $"{BuildPath}{Path.DirectorySeparatorChar}{ProductName}.{target}.{versionNumber}";
         }
 
         private static string GetAppExtension(BuildTarget target)
@@ -102,7 +102,15 @@ namespace Editor.Build
         [MenuItem("DevOps/Build/Build For Windows 64")]
         public static void PerformWindowsBuild()
         {
+            // Temp set scripting backend to Mono for Windows if we're on windows. 
+/*#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, ScriptingImplementation.Mono2x);
+#endif*/
             PerformBuild(BuildTarget.StandaloneWindows64, BuildOptions.None);
+            // Set it back again if need be
+/*#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, ScriptingImplementation.IL2CPP);
+#endif*/
         }
 
         [MenuItem("DevOps/Build/Build For Linux 64")]
@@ -154,7 +162,7 @@ namespace Editor.Build
             var versionNumber = Git.BuildVersion;
             var buildPathForTarget = GetBuildLocationForTarget(target);
             Encoding utf8WithoutBom = new UTF8Encoding(false);
-            using (TextWriter tw = new StreamWriter($"{buildPathForTarget}/buildnumber.txt", false, utf8WithoutBom))
+            using (TextWriter tw = new StreamWriter($"{buildPathForTarget}{Path.DirectorySeparatorChar}buildnumber.txt", false, utf8WithoutBom))
             {
                 tw.WriteLine(versionNumber);
             }
@@ -203,7 +211,7 @@ namespace Editor.Build
         {
             var versionNumber = Git.BuildVersion;
             PlayerSettings.bundleVersion = versionNumber;
-            var buildLocation = $"{BuildPath}/{ProductName}.{target}.{versionNumber}";
+            var buildLocation = $"{BuildPath}{Path.DirectorySeparatorChar}{ProductName}.{target}.{versionNumber}";
             try
             {
                 Debug.Log($"deleting build, {buildLocation}");
