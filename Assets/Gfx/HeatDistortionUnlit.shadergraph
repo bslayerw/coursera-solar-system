@@ -1603,7 +1603,7 @@
     },
     "m_Name": "heatDistortion",
     "m_DefaultReferenceName": "Vector1_cb94a2d9d441482f9b73eeaf1384516a",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "heatDistortion_",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -1810,10 +1810,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 193.99990844726563,
-            "y": 94.5,
-            "width": 207.99998474121095,
-            "height": 312.5
+            "x": 194.00001525878907,
+            "y": 92.6666488647461,
+            "width": 208.0,
+            "height": 313.33331298828127
         }
     },
     "m_Slots": [
@@ -2064,7 +2064,7 @@
     },
     "m_Name": "Mask",
     "m_DefaultReferenceName": "Texture2D_f3a17f2bc3ba475f981578c60f00563c",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "Mask_",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -2191,7 +2191,7 @@
     },
     "m_Name": "DistortionSpeed",
     "m_DefaultReferenceName": "Vector2_fc082dd2bbda4869a2896f8a3ee3e3c7",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "distortionSpeed",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

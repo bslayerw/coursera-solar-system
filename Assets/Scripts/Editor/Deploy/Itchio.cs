@@ -33,8 +33,13 @@ namespace Editor.Deploy
     {
         // because the executable butler is already in my path / env variables (on macOS) I can
         // just refer to the executable name
+        #if UNITY_EDITOR_WIN
+        public static string pathToButlerExecutable = "C:\\Users\\bslay\\Projects\\bin\\butler\\butler.exe";
+        #endif
+        #if UNITY_EDITOR_OSX
+        
         public static string pathToButlerExecutable = "/Users/byronwright/Projects/Goodies/itchio/butler/butler";
-
+        #endif
         // An example of these two variables can be found in the url of your project e.g.:
         //https://bslayerw.itch.io/solar-system
         // where bslayerw part is your username and "solar-system" is your game/project name

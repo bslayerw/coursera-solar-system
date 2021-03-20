@@ -43,11 +43,14 @@ namespace Editor.Build
         private static void PerformBuild(BuildTarget target, BuildOptions options)
         {
             var versionNumber = Git.BuildVersion;
+            UpdateProjectBuildNumberResource(versionNumber);
             PlayerSettings.bundleVersion = versionNumber;
             var buildLocation = $"{BuildPath}{Path.DirectorySeparatorChar}{ProductName}.{target}.{versionNumber}";
-            var buildName = $"{ProductName}{Path.DirectorySeparatorChar}{GetAppExtension(target)}";
+            var buildName = $"{ProductName}{GetAppExtension(target)}";
             Debug.Log($"buildLocation {buildLocation}");
             Debug.Log($"path: {buildLocation}{Path.DirectorySeparatorChar}{buildName}");
+            
+            
             // edge case for WebGL, as it's a single folder with all the files in it 
             if (target == BuildTarget.WebGL)
             {
@@ -159,12 +162,22 @@ namespace Editor.Build
         
         private static void CreateVersionFile(BuildTarget target)
         {
-            var versionNumber = Git.BuildVersion;
+            var buildNumber = Git.BuildVersion;
             var buildPathForTarget = GetBuildLocationForTarget(target);
             Encoding utf8WithoutBom = new UTF8Encoding(false);
             using (TextWriter tw = new StreamWriter($"{buildPathForTarget}{Path.DirectorySeparatorChar}buildnumber.txt", false, utf8WithoutBom))
             {
-                tw.WriteLine(versionNumber);
+                tw.WriteLine(buildNumber);
+            }
+        }
+
+        private static void UpdateProjectBuildNumberResource(string buildNumber)
+        {
+            Encoding utf8WithoutBom = new UTF8Encoding(false);
+            var resourceFolderPath = System.IO.Path.Combine(Application.dataPath, "Resources", "buildnumber.txt");
+            using (TextWriter tw = new StreamWriter(resourceFolderPath, false, utf8WithoutBom))
+            {
+                tw.WriteLine(buildNumber);
             }
         }
 

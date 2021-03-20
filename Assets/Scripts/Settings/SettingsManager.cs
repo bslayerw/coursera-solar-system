@@ -63,6 +63,14 @@ namespace Settings
         public SelectionDisplayData[] selectionData;
 
 
+        private string buildNumberText;
+
+        private void Awake()
+        {
+            buildNumberText = Resources.Load<TextAsset>("buildnumber").text;
+            Debug.Log($"Build number {buildNumberText}");
+        }
+        
         private void OnEnable()
         {
             mainPanel.SetActive(true);
@@ -77,8 +85,6 @@ namespace Settings
             cameraLookAtTarget.ObjectClickDelegate = OnObjectClick;
             // populate data display
             SetDataDisplay(0);
-
-            Utils.ProfileTools.EnumerateProfilerStats();
         }
 
         private void Update()
@@ -98,7 +104,7 @@ namespace Settings
         
         private void SetupBuildNumberInfo()
         {
-            buildNumberLabel.text =  $"Build # {Git.BuildVersion}";
+            buildNumberLabel.text =  $"Build # {buildNumberText}";
         }
 
         private void OnObjectClick(GameObject obj)
