@@ -20,33 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3b589c8-a43e-403f-8043-6b39d58a5961" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/riderModule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Gfx/HeatDistortionVfx.vfx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Gfx/HeatDistortionVfx.vfx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/NewShaderVariants.shadervariants" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/NewShaderVariants.shadervariants.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/ParticleGlowMt.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/ParticleGlowMt.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/buildnumber.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/buildnumber.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gfx/HeatDistortionUnlit.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gfx/HeatDistortionUnlit.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gfx/UniversalRenderPipelineAsset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gfx/UniversalRenderPipelineAsset_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/HeatDistortionUnlitMt.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/HeatDistortionUnlitMt.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Comet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Comet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Solar System.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Solar System.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/Build/Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Build/Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/Deploy/Itchio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/Deploy/Itchio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings/SettingsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings/SettingsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.coursera-solar-system/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +98,7 @@
       <workItem from="1616214416765" duration="1355000" />
       <workItem from="1616206675425" duration="3941000" />
       <workItem from="1616255098539" duration="613000" />
-      <workItem from="1616257725506" duration="2226000" />
+      <workItem from="1616257725506" duration="2828000" />
     </task>
     <servers />
   </component>
@@ -150,6 +124,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="758" y="371" key="IDE.errors.dialog" timestamp="1616302414652">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="758" y="371" key="IDE.errors.dialog/0.0.2560.1400/3840.0.2560.1400/-3840.0.2560.1400@0.0.2560.1400" timestamp="1616302414652" />
     <state x="782" y="345" key="SettingsEditor" timestamp="1616208875911">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
